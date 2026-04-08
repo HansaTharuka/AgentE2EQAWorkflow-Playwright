@@ -1,0 +1,1250 @@
+
+Running 117 tests using 4 workers
+
+[1A[2K[1/117] [chromium] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:51:7 › AC1: Cart Review › AC1-02: Verify cart pricing is calculated correctly
+[1A[2K[2/117] [chromium] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:88:7 › AC1: Cart Review › AC1-04: Verify Checkout button navigates to checkout information page
+[1A[2K[3/117] [chromium] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:17:7 › AC1: Cart Review › AC1-01: Verify cart displays correct items and quantities
+[1A[2K[4/117] [chromium] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:70:7 › AC1: Cart Review › AC1-03: Verify Continue Shopping button navigates back to inventory
+[1A[2K[5/117] [chromium] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:105:7 › AC1: Cart Review › AC1-05: Verify Remove button functionality in cart
+[1A[2K[6/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:27:7 › AC2: Checkout Information Form Validation › AC2-01: Verify First Name field is mandatory
+[1A[2K  1) [chromium] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:17:7 › AC1: Cart Review › AC1-01: Verify cart displays correct items and quantities 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Sauce Labs Bolt T-Shirt')
+    Expected: visible
+    Error: strict mode violation: locator('text=Sauce Labs Bolt T-Shirt') resolved to 2 elements:
+        1) <div class="inventory_item_name" data-test="inventory-item-name">Sauce Labs Bolt T-Shirt</div> aka locator('[data-test="item-1-title-link"]')
+        2) <div class="inventory_item_desc" data-test="inventory-item-desc">Get your testing superhero on with the Sauce Labs…</div> aka getByText('Get your testing superhero on')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Sauce Labs Bolt T-Shirt')[22m
+
+
+      39 |     // Verify specific items are present
+      40 |     await expect(page.locator('text=Sauce Labs Backpack')).toBeVisible();
+    > 41 |     await expect(page.locator('text=Sauce Labs Bolt T-Shirt')).toBeVisible();
+         |                                                                ^
+      42 |     await expect(page.locator('text=Sauce Labs Bike Light')).toBeVisible();
+      43 |
+      44 |     // Verify quantity (QTY) column shows 1 for each item
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:41:64
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-711ac-orrect-items-and-quantities-chromium/error-context.md
+
+
+[1A[2K[7/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:40:7 › AC2: Checkout Information Form Validation › AC2-02: Verify Last Name field is mandatory
+[1A[2K  2) [chromium] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:105:7 › AC1: Cart Review › AC1-05: Verify Remove button functionality in cart 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Sauce Labs Bolt T-Shirt')
+    Expected: visible
+    Error: strict mode violation: locator('text=Sauce Labs Bolt T-Shirt') resolved to 2 elements:
+        1) <div class="inventory_item_name" data-test="inventory-item-name">Sauce Labs Bolt T-Shirt</div> aka locator('[data-test="item-1-title-link"]')
+        2) <div class="inventory_item_desc" data-test="inventory-item-desc">Get your testing superhero on with the Sauce Labs…</div> aka locator('[data-test="inventory-item-desc"]')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Sauce Labs Bolt T-Shirt')[22m
+
+
+      119 |     // Verify Backpack is removed, only T-Shirt remains
+      120 |     await expect(page.locator('.cart_item')).toHaveCount(1);
+    > 121 |     await expect(page.locator('text=Sauce Labs Bolt T-Shirt')).toBeVisible();
+          |                                                                ^
+      122 |     await expect(page.locator('text=Sauce Labs Backpack')).not.toBeVisible();
+      123 |
+      124 |     // Verify cart badge updates to show 1 item
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:121:64
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-41984-utton-functionality-in-cart-chromium/error-context.md
+
+
+[1A[2K[8/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:53:7 › AC2: Checkout Information Form Validation › AC2-03: Verify Zip Code field is mandatory
+[1A[2K  3) [chromium] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:51:7 › AC1: Cart Review › AC1-02: Verify cart pricing is calculated correctly 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('.summary_total')
+    Expected substring: [32m"$55.97"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('.summary_total')[22m
+
+
+      65 |
+      66 |     // Verify subtotal is correct (29.99 + 15.99 + 9.99 = 55.97)
+    > 67 |     await expect(page.locator('.summary_total')).toContainText('$55.97');
+         |                                                  ^
+      68 |   });
+      69 |
+      70 |   test('AC1-03: Verify Continue Shopping button navigates back to inventory', async ({ page }) => {
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:67:50
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-039c5-ing-is-calculated-correctly-chromium/error-context.md
+
+
+[1A[2K[9/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:66:7 › AC2: Checkout Information Form Validation › AC2-04: Verify all fields mandatory - error message for empty form
+[1A[2K  4) [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:27:7 › AC2: Checkout Information Form Validation › AC2-01: Verify First Name field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      34 |
+      35 |     // Verify error message is displayed
+    > 36 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+         |                                            ^
+      37 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      38 |   });
+      39 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:36:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-25d26-rst-Name-field-is-mandatory-chromium/error-context.md
+
+
+[1A[2K  5) [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:40:7 › AC2: Checkout Information Form Validation › AC2-02: Verify Last Name field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: Last name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      47 |
+      48 |     // Verify error message is displayed
+    > 49 |     await expect(page.locator('h3.error')).toContainText('Error: Last name is required');
+         |                                            ^
+      50 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      51 |   });
+      52 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:49:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-cdc07-ast-Name-field-is-mandatory-chromium/error-context.md
+
+
+[1A[2K[10/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:76:7 › AC2: Checkout Information Form Validation › AC2-05: Verify valid form submission with correct data
+[1A[2K[11/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:90:7 › AC2: Checkout Information Form Validation › AC2-06: Verify form accepts special characters in First Name
+[1A[2K  6) [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:53:7 › AC2: Checkout Information Form Validation › AC2-03: Verify Zip Code field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: Postal code is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      60 |
+      61 |     // Verify error message is displayed
+    > 62 |     await expect(page.locator('h3.error')).toContainText('Error: Postal code is required');
+         |                                            ^
+      63 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      64 |   });
+      65 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:62:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-71e35-Zip-Code-field-is-mandatory-chromium/error-context.md
+
+
+[1A[2K[12/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:118:7 › AC2: Checkout Information Form Validation › AC2-08: Verify Cancel button returns to cart page
+[1A[2K[13/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:104:7 › AC2: Checkout Information Form Validation › AC2-07: Verify form accepts various Zip Code formats
+[1A[2K[14/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:132:7 › AC2: Checkout Information Form Validation › AC2-09: Verify long names are accepted in form fields
+[1A[2K[15/117] [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:149:7 › AC2: Checkout Information Form Validation › AC2-10: Verify error message dismissal when user corrects field
+[1A[2K[16/117] [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:35:7 › AC3: Order Overview › AC3-01: Verify cart items summary is displayed correctly
+[1A[2K[17/117] [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:51:7 › AC3: Order Overview › AC3-02: Verify item prices in order overview
+[1A[2K  7) [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:35:7 › AC3: Order Overview › AC3-01: Verify cart items summary is displayed correctly 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Sauce Labs Bolt T-Shirt')
+    Expected: visible
+    Error: strict mode violation: locator('text=Sauce Labs Bolt T-Shirt') resolved to 2 elements:
+        1) <div class="inventory_item_name" data-test="inventory-item-name">Sauce Labs Bolt T-Shirt</div> aka locator('[data-test="item-1-title-link"]')
+        2) <div class="inventory_item_desc" data-test="inventory-item-desc">Get your testing superhero on with the Sauce Labs…</div> aka getByText('Get your testing superhero on')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Sauce Labs Bolt T-Shirt')[22m
+
+
+      41 |     // Verify specific items are listed
+      42 |     await expect(page.locator('text=Sauce Labs Backpack')).toBeVisible();
+    > 43 |     await expect(page.locator('text=Sauce Labs Bolt T-Shirt')).toBeVisible();
+         |                                                                ^
+      44 |
+      45 |     // Verify QTY column shows quantity 1 for each item
+      46 |     const quantities = page.locator('.summary_quantity');
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC3-order-overview.spec.ts:43:64
+
+    Error Context: test-results/saucedemo-checkout-AC3-ord-80343-mary-is-displayed-correctly-chromium/error-context.md
+
+
+[1A[2K[18/117] [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:58:7 › AC3: Order Overview › AC3-03: Verify Payment Information section displays
+[1A[2K  8) [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:66:7 › AC2: Checkout Information Form Validation › AC2-04: Verify all fields mandatory - error message for empty form 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      70 |
+      71 |     // Verify error message appears (likely First Name required based on validation order)
+    > 72 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+         |                                            ^
+      73 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      74 |   });
+      75 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:72:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-96eb0-rror-message-for-empty-form-chromium/error-context.md
+
+
+[1A[2K[19/117] [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:66:7 › AC3: Order Overview › AC3-04: Verify Shipping Information section displays
+[1A[2K[20/117] [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:74:7 › AC3: Order Overview › AC3-05: Verify Price total calculation is correct
+[1A[2K[21/117] [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:89:7 › AC3: Order Overview › AC3-06: Verify Cancel button on Order Overview returns to checkout
+[1A[2K[22/117] [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:98:7 › AC3: Order Overview › AC3-07: Verify Finish button proceeds to order completion
+[1A[2K  9) [chromium] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:149:7 › AC2: Checkout Information Form Validation › AC2-10: Verify error message dismissal when user corrects field 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      156 |
+      157 |     // Verify error message 'Error: First name is required' appears
+    > 158 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+          |                                            ^
+      159 |
+      160 |     // Enter 'John' in First Name field
+      161 |     await page.locator('[data-test="firstName"]').fill('John');
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:158:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-2cb04-al-when-user-corrects-field-chromium/error-context.md
+
+
+[1A[2K[23/117] [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:107:7 › AC3: Order Overview › AC3-08: Verify totals with multiple items
+[1A[2K  10) [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:51:7 › AC3: Order Overview › AC3-02: Verify item prices in order overview 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('.summary_item_price').first()
+    Expected substring: [32m"$29.99"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('.summary_item_price').first()[22m
+
+
+      52 |     // Verify each item in the summary shows the correct price
+      53 |     const prices = page.locator('.summary_item_price');
+    > 54 |     await expect(prices.nth(0)).toContainText('$29.99');
+         |                                 ^
+      55 |     await expect(prices.nth(1)).toContainText('$15.99');
+      56 |   });
+      57 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC3-order-overview.spec.ts:54:33
+
+    Error Context: test-results/saucedemo-checkout-AC3-ord-0f437-em-prices-in-order-overview-chromium/error-context.md
+
+
+[1A[2K[24/117] [chromium] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:39:7 › AC4: Order Completion › AC4-01: Verify Order Completion page displays after checkout
+[1A[2K[25/117] [chromium] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:47:7 › AC4: Order Completion › AC4-02: Verify success message is displayed
+[1A[2K[26/117] [chromium] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:55:7 › AC4: Order Completion › AC4-03: Verify order confirmation message displays delivery information
+[1A[2K  11) [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:89:7 › AC3: Order Overview › AC3-06: Verify Cancel button on Order Overview returns to checkout 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveURL[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/.*checkout-step-one.html/[39m
+    Received string:  [31m"https://www.saucedemo.com/inventory.html"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveURL" with timeout 5000ms[22m
+    [2m    9 × unexpected value "https://www.saucedemo.com/inventory.html"[22m
+
+
+      92 |
+      93 |     // Verify user is navigated back to Checkout Information page
+    > 94 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+         |                        ^
+      95 |     await expect(page.locator('[data-test="firstName"]')).toBeVisible();
+      96 |   });
+      97 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC3-order-overview.spec.ts:94:24
+
+    Error Context: test-results/saucedemo-checkout-AC3-ord-f3c4d-verview-returns-to-checkout-chromium/error-context.md
+
+
+[1A[2K[27/117] [chromium] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:62:7 › AC4: Order Completion › AC4-04: Verify Pony Express image is displayed
+[1A[2K[28/117] [chromium] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:68:7 › AC4: Order Completion › AC4-05: Verify Back Home button navigates to inventory
+[1A[2K  12) [chromium] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:47:7 › AC4: Order Completion › AC4-02: Verify success message is displayed 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('head > title')
+    Expected substring: [32m"Checkout: Complete"[39m
+    Received string:    [31m""[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('head > title')[22m
+    [2m    9 × locator resolved to <title>Swag Labs</title>[22m
+    [2m      - unexpected value ""[22m
+
+
+      47 |   test('AC4-02: Verify success message is displayed', async ({ page }) => {
+      48 |     // Verify page title shows 'Checkout: Complete!'
+    > 49 |     await expect(page.locator('head > title')).toContainText('Checkout: Complete');
+         |                                                ^
+      50 |
+      51 |     // Verify heading 'Thank you for your order!' is displayed
+      52 |     await expect(page.locator('h2.complete-header')).toContainText('Thank you for your order!');
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC4-order-completion.spec.ts:49:48
+
+    Error Context: test-results/saucedemo-checkout-AC4-ord-29ac4-uccess-message-is-displayed-chromium/error-context.md
+
+
+[1A[2K[29/117] [chromium] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:88:7 › AC4: Order Completion › AC4-06: Verify order page URL is correct
+[1A[2K[30/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:25:7 › AC5: Error Handling & Validation › AC5-01: Verify numbers-only validation in name fields
+[1A[2K  13) [chromium] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:55:7 › AC4: Order Completion › AC4-03: Verify order confirmation message displays delivery information 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('.complete-text')
+    Expected substring: [32m"Pony Express"[39m
+    Received string:    [31m"Your order has been dispatched, and will arrive just as fast as the pony can get there!"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('.complete-text')[22m
+    [2m    9 × locator resolved to <div class="complete-text" data-test="complete-text">Your order has been dispatched, and will arrive j…</div>[22m
+    [2m      - unexpected value "Your order has been dispatched, and will arrive just as fast as the pony can get there!"[22m
+
+
+      57 |     const confirmationText = page.locator('.complete-text');
+      58 |     await expect(confirmationText).toContainText('Your order has been dispatched');
+    > 59 |     await expect(confirmationText).toContainText('Pony Express');
+         |                                    ^
+      60 |   });
+      61 |
+      62 |   test('AC4-04: Verify Pony Express image is displayed', async ({ page }) => {
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC4-order-completion.spec.ts:59:36
+
+    Error Context: test-results/saucedemo-checkout-AC4-ord-9e8ff-splays-delivery-information-chromium/error-context.md
+
+
+[1A[2K[31/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:57:7 › AC5: Error Handling & Validation › AC5-03: Verify SQL injection characters are handled safely
+[1A[2K[32/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:39:7 › AC5: Error Handling & Validation › AC5-02: Verify HTML special characters are handled
+[1A[2K[33/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:71:7 › AC5: Error Handling & Validation › AC5-04: Verify very long input in Zip Code field
+[1A[2K[34/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:99:7 › AC5: Error Handling & Validation › AC5-05: Verify empty spaces-only validation
+[1A[2K[35/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:114:7 › AC5: Error Handling & Validation › AC5-06: Verify field copy-paste functionality
+[1A[2K[36/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:130:7 › AC5: Error Handling & Validation › AC5-07: Verify field navigation with Tab key
+[1A[2K[37/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:154:7 › AC5: Error Handling & Validation › AC5-08: Verify form persistence after error correction
+[1A[2K  14) [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:39:7 › AC5: Error Handling & Validation › AC5-02: Verify HTML special characters are handled 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('script')
+    Expected: [32m0[39m
+    Received: [31m2[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('script')[22m
+    [2m    9 × locator resolved to 2 elements[22m
+    [2m      - unexpected value "2"[22m
+
+
+      52 |     // Verify content doesn't have script tags rendered as actual elements
+      53 |     const scripts = page.locator('script');
+    > 54 |     await expect(scripts).toHaveCount(0);
+         |                           ^
+      55 |   });
+      56 |
+      57 |   test('AC5-03: Verify SQL injection characters are handled safely', async ({ page }) => {
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:54:27
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-ea448-cial-characters-are-handled-chromium/error-context.md
+
+
+[1A[2K  15) [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:99:7 › AC5: Error Handling & Validation › AC5-05: Verify empty spaces-only validation 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      108 |     // Verify form validation fails (spaces are trimmed to empty)
+      109 |     // Should show error for First Name
+    > 110 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+          |                                            ^
+      111 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      112 |   });
+      113 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:110:44
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-48042-mpty-spaces-only-validation-chromium/error-context.md
+
+
+[1A[2K[38/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:178:7 › AC5: Error Handling & Validation › AC5-09: Verify multiple validation errors are shown
+[1A[2K[39/117] [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:191:7 › AC5: Error Handling & Validation › AC5-10: Verify cart persists through checkout errors
+[1A[2K  16) [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:154:7 › AC5: Error Handling & Validation › AC5-08: Verify form persistence after error correction 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: Last name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      161 |
+      162 |     // Verify error message is shown: 'Error: Last Name is required'
+    > 163 |     await expect(page.locator('h3.error')).toContainText('Error: Last name is required');
+          |                                            ^
+      164 |
+      165 |     // Verify First Name field still contains 'John' and Zip still contains '12345'
+      166 |     await expect(page.locator('[data-test="firstName"]')).toHaveValue('John');
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:163:44
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-6f0ca-ence-after-error-correction-chromium/error-context.md
+
+
+[1A[2K[40/117] [firefox] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:17:7 › AC1: Cart Review › AC1-01: Verify cart displays correct items and quantities
+[1A[2K  17) [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:178:7 › AC5: Error Handling & Validation › AC5-09: Verify multiple validation errors are shown 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      182 |
+      183 |     // Verify error message is displayed (likely for First Name, the first field in validation order)
+    > 184 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+          |                                            ^
+      185 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      186 |
+      187 |     // Note: Most applications validate in order and show one error at a time
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:184:44
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-8ee7b-validation-errors-are-shown-chromium/error-context.md
+
+
+[1A[2K  18) [chromium] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:191:7 › AC5: Error Handling & Validation › AC5-10: Verify cart persists through checkout errors 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      210 |
+      211 |     // Verify error is shown
+    > 212 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+          |                                            ^
+      213 |
+      214 |     // Click Cancel to return to cart
+      215 |     await page.locator('[name="cancel"]').click();
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:212:44
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-9aed1-sts-through-checkout-errors-chromium/error-context.md
+
+
+[1A[2K[41/117] [firefox] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:51:7 › AC1: Cart Review › AC1-02: Verify cart pricing is calculated correctly
+[1A[2K[42/117] [firefox] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:70:7 › AC1: Cart Review › AC1-03: Verify Continue Shopping button navigates back to inventory
+[1A[2K  19) [chromium] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:107:7 › AC3: Order Overview › AC3-08: Verify totals with multiple items 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[name="cancel"]')[22m
+
+
+      109 |     // First, go back to inventory to add more items
+      110 |     await page.locator('[name="cancel"]').click();
+    > 111 |     await page.locator('[name="cancel"]').click();
+          |                                           ^
+      112 |     await page.locator('[name="continue-shopping"]').click();
+      113 |
+      114 |     // Add 3rd item: Bike Light ($9.99)
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC3-order-overview.spec.ts:111:43
+
+    Error Context: test-results/saucedemo-checkout-AC3-ord-6d797--totals-with-multiple-items-chromium/error-context.md
+
+
+[1A[2K  20) [firefox] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:17:7 › AC1: Cart Review › AC1-01: Verify cart displays correct items and quantities 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Sauce Labs Bolt T-Shirt')
+    Expected: visible
+    Error: strict mode violation: locator('text=Sauce Labs Bolt T-Shirt') resolved to 2 elements:
+        1) <div class="inventory_item_name" data-test="inventory-item-name">Sauce Labs Bolt T-Shirt</div> aka locator('[data-test="item-1-title-link"]')
+        2) <div class="inventory_item_desc" data-test="inventory-item-desc">Get your testing superhero on with the Sauce Labs…</div> aka getByText('Get your testing superhero on')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Sauce Labs Bolt T-Shirt')[22m
+
+
+      39 |     // Verify specific items are present
+      40 |     await expect(page.locator('text=Sauce Labs Backpack')).toBeVisible();
+    > 41 |     await expect(page.locator('text=Sauce Labs Bolt T-Shirt')).toBeVisible();
+         |                                                                ^
+      42 |     await expect(page.locator('text=Sauce Labs Bike Light')).toBeVisible();
+      43 |
+      44 |     // Verify quantity (QTY) column shows 1 for each item
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:41:64
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-711ac-orrect-items-and-quantities-firefox/error-context.md
+
+
+[1A[2K[43/117] [firefox] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:88:7 › AC1: Cart Review › AC1-04: Verify Checkout button navigates to checkout information page
+[1A[2K[44/117] [firefox] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:105:7 › AC1: Cart Review › AC1-05: Verify Remove button functionality in cart
+[1A[2K[45/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:27:7 › AC2: Checkout Information Form Validation › AC2-01: Verify First Name field is mandatory
+[1A[2K[46/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:40:7 › AC2: Checkout Information Form Validation › AC2-02: Verify Last Name field is mandatory
+[1A[2K  21) [firefox] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:105:7 › AC1: Cart Review › AC1-05: Verify Remove button functionality in cart 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Sauce Labs Bolt T-Shirt')
+    Expected: visible
+    Error: strict mode violation: locator('text=Sauce Labs Bolt T-Shirt') resolved to 2 elements:
+        1) <div class="inventory_item_name" data-test="inventory-item-name">Sauce Labs Bolt T-Shirt</div> aka locator('[data-test="item-1-title-link"]')
+        2) <div class="inventory_item_desc" data-test="inventory-item-desc">Get your testing superhero on with the Sauce Labs…</div> aka locator('[data-test="inventory-item-desc"]')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Sauce Labs Bolt T-Shirt')[22m
+
+
+      119 |     // Verify Backpack is removed, only T-Shirt remains
+      120 |     await expect(page.locator('.cart_item')).toHaveCount(1);
+    > 121 |     await expect(page.locator('text=Sauce Labs Bolt T-Shirt')).toBeVisible();
+          |                                                                ^
+      122 |     await expect(page.locator('text=Sauce Labs Backpack')).not.toBeVisible();
+      123 |
+      124 |     // Verify cart badge updates to show 1 item
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:121:64
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-41984-utton-functionality-in-cart-firefox/error-context.md
+
+
+[1A[2K[47/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:53:7 › AC2: Checkout Information Form Validation › AC2-03: Verify Zip Code field is mandatory
+[1A[2K  22) [firefox] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:51:7 › AC1: Cart Review › AC1-02: Verify cart pricing is calculated correctly 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('.summary_total')
+    Expected substring: [32m"$55.97"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('.summary_total')[22m
+
+
+      65 |
+      66 |     // Verify subtotal is correct (29.99 + 15.99 + 9.99 = 55.97)
+    > 67 |     await expect(page.locator('.summary_total')).toContainText('$55.97');
+         |                                                  ^
+      68 |   });
+      69 |
+      70 |   test('AC1-03: Verify Continue Shopping button navigates back to inventory', async ({ page }) => {
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:67:50
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-039c5-ing-is-calculated-correctly-firefox/error-context.md
+
+
+[1A[2K[48/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:66:7 › AC2: Checkout Information Form Validation › AC2-04: Verify all fields mandatory - error message for empty form
+[1A[2K  23) [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:27:7 › AC2: Checkout Information Form Validation › AC2-01: Verify First Name field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      34 |
+      35 |     // Verify error message is displayed
+    > 36 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+         |                                            ^
+      37 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      38 |   });
+      39 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:36:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-25d26-rst-Name-field-is-mandatory-firefox/error-context.md
+
+
+[1A[2K[49/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:76:7 › AC2: Checkout Information Form Validation › AC2-05: Verify valid form submission with correct data
+[1A[2K  24) [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:40:7 › AC2: Checkout Information Form Validation › AC2-02: Verify Last Name field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: Last name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      47 |
+      48 |     // Verify error message is displayed
+    > 49 |     await expect(page.locator('h3.error')).toContainText('Error: Last name is required');
+         |                                            ^
+      50 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      51 |   });
+      52 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:49:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-cdc07-ast-Name-field-is-mandatory-firefox/error-context.md
+
+
+[1A[2K[50/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:104:7 › AC2: Checkout Information Form Validation › AC2-07: Verify form accepts various Zip Code formats
+[1A[2K[51/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:90:7 › AC2: Checkout Information Form Validation › AC2-06: Verify form accepts special characters in First Name
+[1A[2K[52/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:118:7 › AC2: Checkout Information Form Validation › AC2-08: Verify Cancel button returns to cart page
+[1A[2K  25) [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:53:7 › AC2: Checkout Information Form Validation › AC2-03: Verify Zip Code field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: Postal code is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      60 |
+      61 |     // Verify error message is displayed
+    > 62 |     await expect(page.locator('h3.error')).toContainText('Error: Postal code is required');
+         |                                            ^
+      63 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      64 |   });
+      65 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:62:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-71e35-Zip-Code-field-is-mandatory-firefox/error-context.md
+
+
+[1A[2K[53/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:132:7 › AC2: Checkout Information Form Validation › AC2-09: Verify long names are accepted in form fields
+[1A[2K[54/117] [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:149:7 › AC2: Checkout Information Form Validation › AC2-10: Verify error message dismissal when user corrects field
+[1A[2K[55/117] [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:35:7 › AC3: Order Overview › AC3-01: Verify cart items summary is displayed correctly
+[1A[2K  26) [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:66:7 › AC2: Checkout Information Form Validation › AC2-04: Verify all fields mandatory - error message for empty form 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      70 |
+      71 |     // Verify error message appears (likely First Name required based on validation order)
+    > 72 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+         |                                            ^
+      73 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      74 |   });
+      75 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:72:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-96eb0-rror-message-for-empty-form-firefox/error-context.md
+
+
+[1A[2K[56/117] [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:51:7 › AC3: Order Overview › AC3-02: Verify item prices in order overview
+[1A[2K[57/117] [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:58:7 › AC3: Order Overview › AC3-03: Verify Payment Information section displays
+[1A[2K  27) [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:35:7 › AC3: Order Overview › AC3-01: Verify cart items summary is displayed correctly 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Sauce Labs Bolt T-Shirt')
+    Expected: visible
+    Error: strict mode violation: locator('text=Sauce Labs Bolt T-Shirt') resolved to 2 elements:
+        1) <div class="inventory_item_name" data-test="inventory-item-name">Sauce Labs Bolt T-Shirt</div> aka locator('[data-test="item-1-title-link"]')
+        2) <div class="inventory_item_desc" data-test="inventory-item-desc">Get your testing superhero on with the Sauce Labs…</div> aka getByText('Get your testing superhero on')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Sauce Labs Bolt T-Shirt')[22m
+
+
+      41 |     // Verify specific items are listed
+      42 |     await expect(page.locator('text=Sauce Labs Backpack')).toBeVisible();
+    > 43 |     await expect(page.locator('text=Sauce Labs Bolt T-Shirt')).toBeVisible();
+         |                                                                ^
+      44 |
+      45 |     // Verify QTY column shows quantity 1 for each item
+      46 |     const quantities = page.locator('.summary_quantity');
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC3-order-overview.spec.ts:43:64
+
+    Error Context: test-results/saucedemo-checkout-AC3-ord-80343-mary-is-displayed-correctly-firefox/error-context.md
+
+
+[1A[2K[58/117] [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:66:7 › AC3: Order Overview › AC3-04: Verify Shipping Information section displays
+[1A[2K[59/117] [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:74:7 › AC3: Order Overview › AC3-05: Verify Price total calculation is correct
+[1A[2K[60/117] [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:89:7 › AC3: Order Overview › AC3-06: Verify Cancel button on Order Overview returns to checkout
+[1A[2K[61/117] [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:98:7 › AC3: Order Overview › AC3-07: Verify Finish button proceeds to order completion
+[1A[2K  28) [firefox] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:149:7 › AC2: Checkout Information Form Validation › AC2-10: Verify error message dismissal when user corrects field 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      156 |
+      157 |     // Verify error message 'Error: First name is required' appears
+    > 158 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+          |                                            ^
+      159 |
+      160 |     // Enter 'John' in First Name field
+      161 |     await page.locator('[data-test="firstName"]').fill('John');
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:158:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-2cb04-al-when-user-corrects-field-firefox/error-context.md
+
+
+[1A[2K[62/117] [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:107:7 › AC3: Order Overview › AC3-08: Verify totals with multiple items
+[1A[2K[63/117] [firefox] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:39:7 › AC4: Order Completion › AC4-01: Verify Order Completion page displays after checkout
+[1A[2K[64/117] [firefox] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:47:7 › AC4: Order Completion › AC4-02: Verify success message is displayed
+[1A[2K  29) [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:51:7 › AC3: Order Overview › AC3-02: Verify item prices in order overview 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('.summary_item_price').first()
+    Expected substring: [32m"$29.99"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('.summary_item_price').first()[22m
+
+
+      52 |     // Verify each item in the summary shows the correct price
+      53 |     const prices = page.locator('.summary_item_price');
+    > 54 |     await expect(prices.nth(0)).toContainText('$29.99');
+         |                                 ^
+      55 |     await expect(prices.nth(1)).toContainText('$15.99');
+      56 |   });
+      57 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC3-order-overview.spec.ts:54:33
+
+    Error Context: test-results/saucedemo-checkout-AC3-ord-0f437-em-prices-in-order-overview-firefox/error-context.md
+
+
+[1A[2K[65/117] [firefox] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:55:7 › AC4: Order Completion › AC4-03: Verify order confirmation message displays delivery information
+[1A[2K  30) [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:89:7 › AC3: Order Overview › AC3-06: Verify Cancel button on Order Overview returns to checkout 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveURL[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/.*checkout-step-one.html/[39m
+    Received string:  [31m"https://www.saucedemo.com/inventory.html"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveURL" with timeout 5000ms[22m
+    [2m    9 × unexpected value "https://www.saucedemo.com/inventory.html"[22m
+
+
+      92 |
+      93 |     // Verify user is navigated back to Checkout Information page
+    > 94 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+         |                        ^
+      95 |     await expect(page.locator('[data-test="firstName"]')).toBeVisible();
+      96 |   });
+      97 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC3-order-overview.spec.ts:94:24
+
+    Error Context: test-results/saucedemo-checkout-AC3-ord-f3c4d-verview-returns-to-checkout-firefox/error-context.md
+
+
+[1A[2K[66/117] [firefox] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:62:7 › AC4: Order Completion › AC4-04: Verify Pony Express image is displayed
+[1A[2K[67/117] [firefox] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:68:7 › AC4: Order Completion › AC4-05: Verify Back Home button navigates to inventory
+[1A[2K  31) [firefox] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:47:7 › AC4: Order Completion › AC4-02: Verify success message is displayed 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('head > title')
+    Expected substring: [32m"Checkout: Complete"[39m
+    Received string:    [31m""[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('head > title')[22m
+    [2m    9 × locator resolved to <title>Swag Labs</title>[22m
+    [2m      - unexpected value ""[22m
+
+
+      47 |   test('AC4-02: Verify success message is displayed', async ({ page }) => {
+      48 |     // Verify page title shows 'Checkout: Complete!'
+    > 49 |     await expect(page.locator('head > title')).toContainText('Checkout: Complete');
+         |                                                ^
+      50 |
+      51 |     // Verify heading 'Thank you for your order!' is displayed
+      52 |     await expect(page.locator('h2.complete-header')).toContainText('Thank you for your order!');
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC4-order-completion.spec.ts:49:48
+
+    Error Context: test-results/saucedemo-checkout-AC4-ord-29ac4-uccess-message-is-displayed-firefox/error-context.md
+
+
+[1A[2K[68/117] [firefox] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:88:7 › AC4: Order Completion › AC4-06: Verify order page URL is correct
+[1A[2K[69/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:25:7 › AC5: Error Handling & Validation › AC5-01: Verify numbers-only validation in name fields
+[1A[2K  32) [firefox] › tests/saucedemo-checkout/AC4-order-completion.spec.ts:55:7 › AC4: Order Completion › AC4-03: Verify order confirmation message displays delivery information 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('.complete-text')
+    Expected substring: [32m"Pony Express"[39m
+    Received string:    [31m"Your order has been dispatched, and will arrive just as fast as the pony can get there!"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('.complete-text')[22m
+    [2m    9 × locator resolved to <div class="complete-text" data-test="complete-text">Your order has been dispatched, and will arrive j…</div>[22m
+    [2m      - unexpected value "Your order has been dispatched, and will arrive just as fast as the pony can get there!"[22m
+
+
+      57 |     const confirmationText = page.locator('.complete-text');
+      58 |     await expect(confirmationText).toContainText('Your order has been dispatched');
+    > 59 |     await expect(confirmationText).toContainText('Pony Express');
+         |                                    ^
+      60 |   });
+      61 |
+      62 |   test('AC4-04: Verify Pony Express image is displayed', async ({ page }) => {
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC4-order-completion.spec.ts:59:36
+
+    Error Context: test-results/saucedemo-checkout-AC4-ord-9e8ff-splays-delivery-information-firefox/error-context.md
+
+
+[1A[2K[70/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:57:7 › AC5: Error Handling & Validation › AC5-03: Verify SQL injection characters are handled safely
+[1A[2K[71/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:39:7 › AC5: Error Handling & Validation › AC5-02: Verify HTML special characters are handled
+[1A[2K[72/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:71:7 › AC5: Error Handling & Validation › AC5-04: Verify very long input in Zip Code field
+[1A[2K[73/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:99:7 › AC5: Error Handling & Validation › AC5-05: Verify empty spaces-only validation
+[1A[2K[74/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:114:7 › AC5: Error Handling & Validation › AC5-06: Verify field copy-paste functionality
+[1A[2K[75/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:130:7 › AC5: Error Handling & Validation › AC5-07: Verify field navigation with Tab key
+[1A[2K[76/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:154:7 › AC5: Error Handling & Validation › AC5-08: Verify form persistence after error correction
+[1A[2K  33) [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:39:7 › AC5: Error Handling & Validation › AC5-02: Verify HTML special characters are handled 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('script')
+    Expected: [32m0[39m
+    Received: [31m2[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('script')[22m
+    [2m    9 × locator resolved to 2 elements[22m
+    [2m      - unexpected value "2"[22m
+
+
+      52 |     // Verify content doesn't have script tags rendered as actual elements
+      53 |     const scripts = page.locator('script');
+    > 54 |     await expect(scripts).toHaveCount(0);
+         |                           ^
+      55 |   });
+      56 |
+      57 |   test('AC5-03: Verify SQL injection characters are handled safely', async ({ page }) => {
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:54:27
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-ea448-cial-characters-are-handled-firefox/error-context.md
+
+
+[1A[2K[77/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:178:7 › AC5: Error Handling & Validation › AC5-09: Verify multiple validation errors are shown
+[1A[2K  34) [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:99:7 › AC5: Error Handling & Validation › AC5-05: Verify empty spaces-only validation 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      108 |     // Verify form validation fails (spaces are trimmed to empty)
+      109 |     // Should show error for First Name
+    > 110 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+          |                                            ^
+      111 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      112 |   });
+      113 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:110:44
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-48042-mpty-spaces-only-validation-firefox/error-context.md
+
+
+[1A[2K[78/117] [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:191:7 › AC5: Error Handling & Validation › AC5-10: Verify cart persists through checkout errors
+[1A[2K  35) [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:154:7 › AC5: Error Handling & Validation › AC5-08: Verify form persistence after error correction 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: Last name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      161 |
+      162 |     // Verify error message is shown: 'Error: Last Name is required'
+    > 163 |     await expect(page.locator('h3.error')).toContainText('Error: Last name is required');
+          |                                            ^
+      164 |
+      165 |     // Verify First Name field still contains 'John' and Zip still contains '12345'
+      166 |     await expect(page.locator('[data-test="firstName"]')).toHaveValue('John');
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:163:44
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-6f0ca-ence-after-error-correction-firefox/error-context.md
+
+
+[1A[2K[79/117] [webkit] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:17:7 › AC1: Cart Review › AC1-01: Verify cart displays correct items and quantities
+[1A[2K  36) [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:178:7 › AC5: Error Handling & Validation › AC5-09: Verify multiple validation errors are shown 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      182 |
+      183 |     // Verify error message is displayed (likely for First Name, the first field in validation order)
+    > 184 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+          |                                            ^
+      185 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      186 |
+      187 |     // Note: Most applications validate in order and show one error at a time
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:184:44
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-8ee7b-validation-errors-are-shown-firefox/error-context.md
+
+
+[1A[2K[80/117] [webkit] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:51:7 › AC1: Cart Review › AC1-02: Verify cart pricing is calculated correctly
+[1A[2K  37) [firefox] › tests/saucedemo-checkout/AC5-error-handling.spec.ts:191:7 › AC5: Error Handling & Validation › AC5-10: Verify cart persists through checkout errors 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      210 |
+      211 |     // Verify error is shown
+    > 212 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+          |                                            ^
+      213 |
+      214 |     // Click Cancel to return to cart
+      215 |     await page.locator('[name="cancel"]').click();
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC5-error-handling.spec.ts:212:44
+
+    Error Context: test-results/saucedemo-checkout-AC5-err-9aed1-sts-through-checkout-errors-firefox/error-context.md
+
+
+[1A[2K[81/117] [webkit] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:70:7 › AC1: Cart Review › AC1-03: Verify Continue Shopping button navigates back to inventory
+[1A[2K  38) [firefox] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:107:7 › AC3: Order Overview › AC3-08: Verify totals with multiple items 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[name="cancel"]')[22m
+
+
+      109 |     // First, go back to inventory to add more items
+      110 |     await page.locator('[name="cancel"]').click();
+    > 111 |     await page.locator('[name="cancel"]').click();
+          |                                           ^
+      112 |     await page.locator('[name="continue-shopping"]').click();
+      113 |
+      114 |     // Add 3rd item: Bike Light ($9.99)
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC3-order-overview.spec.ts:111:43
+
+    Error Context: test-results/saucedemo-checkout-AC3-ord-6d797--totals-with-multiple-items-firefox/error-context.md
+
+
+[1A[2K[82/117] [webkit] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:88:7 › AC1: Cart Review › AC1-04: Verify Checkout button navigates to checkout information page
+[1A[2K[83/117] [webkit] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:105:7 › AC1: Cart Review › AC1-05: Verify Remove button functionality in cart
+[1A[2K[84/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:27:7 › AC2: Checkout Information Form Validation › AC2-01: Verify First Name field is mandatory
+[1A[2K  39) [webkit] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:17:7 › AC1: Cart Review › AC1-01: Verify cart displays correct items and quantities 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Sauce Labs Bolt T-Shirt')
+    Expected: visible
+    Error: strict mode violation: locator('text=Sauce Labs Bolt T-Shirt') resolved to 2 elements:
+        1) <div class="inventory_item_name" data-test="inventory-item-name">Sauce Labs Bolt T-Shirt</div> aka locator('[data-test="item-1-title-link"]')
+        2) <div class="inventory_item_desc" data-test="inventory-item-desc">Get your testing superhero on with the Sauce Labs…</div> aka getByText('Get your testing superhero on')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Sauce Labs Bolt T-Shirt')[22m
+
+
+      39 |     // Verify specific items are present
+      40 |     await expect(page.locator('text=Sauce Labs Backpack')).toBeVisible();
+    > 41 |     await expect(page.locator('text=Sauce Labs Bolt T-Shirt')).toBeVisible();
+         |                                                                ^
+      42 |     await expect(page.locator('text=Sauce Labs Bike Light')).toBeVisible();
+      43 |
+      44 |     // Verify quantity (QTY) column shows 1 for each item
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:41:64
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-711ac-orrect-items-and-quantities-webkit/error-context.md
+
+
+[1A[2K[85/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:40:7 › AC2: Checkout Information Form Validation › AC2-02: Verify Last Name field is mandatory
+[1A[2K  40) [webkit] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:105:7 › AC1: Cart Review › AC1-05: Verify Remove button functionality in cart 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Sauce Labs Bolt T-Shirt')
+    Expected: visible
+    Error: strict mode violation: locator('text=Sauce Labs Bolt T-Shirt') resolved to 2 elements:
+        1) <div class="inventory_item_name" data-test="inventory-item-name">Sauce Labs Bolt T-Shirt</div> aka locator('[data-test="item-1-title-link"]')
+        2) <div class="inventory_item_desc" data-test="inventory-item-desc">Get your testing superhero on with the Sauce Labs…</div> aka locator('[data-test="inventory-item-desc"]')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('text=Sauce Labs Bolt T-Shirt')[22m
+
+
+      119 |     // Verify Backpack is removed, only T-Shirt remains
+      120 |     await expect(page.locator('.cart_item')).toHaveCount(1);
+    > 121 |     await expect(page.locator('text=Sauce Labs Bolt T-Shirt')).toBeVisible();
+          |                                                                ^
+      122 |     await expect(page.locator('text=Sauce Labs Backpack')).not.toBeVisible();
+      123 |
+      124 |     // Verify cart badge updates to show 1 item
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:121:64
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-41984-utton-functionality-in-cart-webkit/error-context.md
+
+
+[1A[2K[86/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:53:7 › AC2: Checkout Information Form Validation › AC2-03: Verify Zip Code field is mandatory
+[1A[2K  41) [webkit] › tests/saucedemo-checkout/AC1-cart-review.spec.ts:51:7 › AC1: Cart Review › AC1-02: Verify cart pricing is calculated correctly 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('.summary_total')
+    Expected substring: [32m"$55.97"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('.summary_total')[22m
+
+
+      65 |
+      66 |     // Verify subtotal is correct (29.99 + 15.99 + 9.99 = 55.97)
+    > 67 |     await expect(page.locator('.summary_total')).toContainText('$55.97');
+         |                                                  ^
+      68 |   });
+      69 |
+      70 |   test('AC1-03: Verify Continue Shopping button navigates back to inventory', async ({ page }) => {
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC1-cart-review.spec.ts:67:50
+
+    Error Context: test-results/saucedemo-checkout-AC1-car-039c5-ing-is-calculated-correctly-webkit/error-context.md
+
+
+[1A[2K[87/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:66:7 › AC2: Checkout Information Form Validation › AC2-04: Verify all fields mandatory - error message for empty form
+[1A[2K  42) [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:27:7 › AC2: Checkout Information Form Validation › AC2-01: Verify First Name field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: First name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      34 |
+      35 |     // Verify error message is displayed
+    > 36 |     await expect(page.locator('h3.error')).toContainText('Error: First name is required');
+         |                                            ^
+      37 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      38 |   });
+      39 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:36:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-25d26-rst-Name-field-is-mandatory-webkit/error-context.md
+
+
+[1A[2K[88/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:76:7 › AC2: Checkout Information Form Validation › AC2-05: Verify valid form submission with correct data
+[1A[2K  43) [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:40:7 › AC2: Checkout Information Form Validation › AC2-02: Verify Last Name field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: Last name is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      47 |
+      48 |     // Verify error message is displayed
+    > 49 |     await expect(page.locator('h3.error')).toContainText('Error: Last name is required');
+         |                                            ^
+      50 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      51 |   });
+      52 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:49:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-cdc07-ast-Name-field-is-mandatory-webkit/error-context.md
+
+
+[1A[2K[89/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:104:7 › AC2: Checkout Information Form Validation › AC2-07: Verify form accepts various Zip Code formats
+[1A[2K[90/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:90:7 › AC2: Checkout Information Form Validation › AC2-06: Verify form accepts special characters in First Name
+[1A[2K  44) [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:53:7 › AC2: Checkout Information Form Validation › AC2-03: Verify Zip Code field is mandatory 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('h3.error')
+    Expected substring: [32m"Error: Postal code is required"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('h3.error')[22m
+
+
+      60 |
+      61 |     // Verify error message is displayed
+    > 62 |     await expect(page.locator('h3.error')).toContainText('Error: Postal code is required');
+         |                                            ^
+      63 |     await expect(page).toHaveURL(/.*checkout-step-one.html/);
+      64 |   });
+      65 |
+        at /Users/hansatharuka/Documents/Virtusa/AgentE2EQAWorkflow-Playwright/tests/saucedemo-checkout/AC2-checkout-form.spec.ts:62:44
+
+    Error Context: test-results/saucedemo-checkout-AC2-che-71e35-Zip-Code-field-is-mandatory-webkit/error-context.md
+
+
+[1A[2K[91/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:132:7 › AC2: Checkout Information Form Validation › AC2-09: Verify long names are accepted in form fields
+[1A[2K[92/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:118:7 › AC2: Checkout Information Form Validation › AC2-08: Verify Cancel button returns to cart page
+[1A[2K[93/117] [webkit] › tests/saucedemo-checkout/AC2-checkout-form.spec.ts:149:7 › AC2: Checkout Information Form Validation › AC2-10: Verify error message dismissal when user corrects field
+[1A[2K[94/117] [webkit] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:35:7 › AC3: Order Overview › AC3-01: Verify cart items summary is displayed correctly
+[1A[2K[95/117] [webkit] › tests/saucedemo-checkout/AC3-order-overview.spec.ts:51:7 › AC3: Order Overview › AC3-02: Verify item prices in order overview
